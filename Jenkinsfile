@@ -1,6 +1,7 @@
 pipeline {
     agent {
         dockerfile {
+            label 'testdevops'
             additionalBuildArgs '-t testdevops --no-cache'
         }
     }

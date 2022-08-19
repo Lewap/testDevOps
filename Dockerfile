@@ -1,5 +1,3 @@
-ARG CACHEBUST=1
-
 FROM alpine/git as clone
 WORKDIR /app
 RUN git clone https://github.com/Lewap/testDevOps.git
