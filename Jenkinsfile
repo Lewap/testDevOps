@@ -1,14 +1,13 @@
 pipeline {
     agent {
         dockerfile {
-            alwaysPull true
-            additionalBuildArgs '-t testdevops'
+            additionalBuildArgs '-t testdevops --no-cache'
         }
     }
     stages {
         stage("Docker jenkins testing"){
             steps {
-                echo 'Hello World!!!'
+                echo 'Build DONE'
             }
         }
     }
