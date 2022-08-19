@@ -1,6 +1,8 @@
 pipeline {
     agent {
-        dockerfile true
+        dockerfile {
+            additionalBuildArgs '-t testdevops --no-cache'
+        }
     }
     stages {
         stage("Docker jenkins testing"){
