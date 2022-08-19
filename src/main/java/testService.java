@@ -10,7 +10,7 @@ public class testService {
     @Path("/getSomething")
     @Produces("text/html")
     public Response sampleResponse() {
-        return Response.ok().entity("Some response from testService.sampleResponse").build();
+        return Response.ok().entity("Some response from the WS").build();
 
     }
 }
