@@ -1,7 +1,7 @@
 pipeline {
     agent {
         dockerfile {
-            alwaysPull
+            alwaysPull true
             additionalBuildArgs '-t testdevops'
         }
     }
