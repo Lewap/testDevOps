@@ -10,6 +10,7 @@ pipeline {
             steps {
                 echo 'Build DONE'
                 sh 'uname -a'
+                sh 'find . | grep odbc'
                 //echo 'DOCKER RESTART'
                 //sh 'docker stop $(docker ps -q);docker run -p 8083:8080 testdevops'
             }
