@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh 'uname -a;pwd;whoami'
                 echo 'DOCKER RESTART'
-                sh 'docker stop $(docker ps -q) || true;nohup docker run -p 8083:8080 testdevops &'
+                sh 'docker stop $(docker ps -q) || true;docker run -d -p 8083:8080 testdevops'
             }
         }
     }
