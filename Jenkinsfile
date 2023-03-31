@@ -17,10 +17,9 @@ pipeline {
         stage("DOCKER RESTART LOCAL"){
             agent any
             steps {
-                echo 'Local DOCKER restart'
                 sh 'uname -a;pwd;whoami'
-                //echo 'DOCKER RESTART'
-                //sh 'docker stop $(docker ps -q);docker run -p 8083:8080 testdevops'
+                echo 'DOCKER RESTART'
+                sh 'docker stop $(docker ps -q);docker run -p 8083:8080 testdevops'
             }
         }
     }
