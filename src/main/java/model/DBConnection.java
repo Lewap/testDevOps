@@ -7,35 +7,26 @@ import org.apache.logging.log4j.LogManager;
 
 public class DBConnection {
 
+    //public static volatile DBConnection instance;
+    private String username;
+    private String password;
+    private String url;
+
+    public Connection con = null;
     private static Logger log = LogManager.getLogger(DBConnection.class);
-    public static String getValFromOra(String input){
-        String res="";
-        try{
-//step1 load the driver class
-            //      Class.forName("oracle.jdbc.driver.OracleDriver"); //needed for JDBC < 4.0
 
-//step2 create  the connection object
-            Connection con=DriverManager.getConnection(
+    public DBConnection (String inUsername, String inPassword, String inUrl) {
+        this.username = inUsername;
+        this.password = inPassword;
+        this.url = inUrl;
+        try {
+            con=DriverManager.getConnection(
                     //"jdbc:oracle:thin:@192.168.0.129:1521:orclcdb","lewap","changeMe"
-                    "jdbc:oracle:thin:lewap/changeMe@//192.168.0.129:1521/orcl"
+                    //"jdbc:oracle:thin:lewap/changeMe@//192.168.0.129:1521/orcl"
+                    url, username, password
             );
-
-//step3 create the statement object
-            Statement stmt=con.createStatement();
-
-//step4 execute query
-            ResultSet rs=stmt.executeQuery("select * from t where upper(dummy) = '" + input.toUpperCase() + "'");
-            while(rs.next())
-                res = res + rs.getString(1);/*+"  "+rs.getString(2)+"  "+rs.getString(3)*/
-
-
-//step5 close the connection object
-            con.close();
-
-        }catch(Exception e){
+        } catch (Exception e) {
             log.error(e);
-            //System.out.println(e);
         }
-        return res;
     }
 }
