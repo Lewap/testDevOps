@@ -9,10 +9,7 @@ RUN mvn compile
 RUN mvn package
 
 FROM tomcat:9.0
-# FROM envris/tomcat-jdbc:8-jre7
-#COPY --from=warBuild /app/target/testDevOps.war /usr/local/tomcat/webapps/
 COPY --from=warBuild /app/target/testDevOps.war $CATALINA_HOME/webapps/
-RUN pwd
 RUN cd lib && \
     wget "https://download.oracle.com/otn-pub/otn_software/jdbc/1918/ojdbc10.jar"
 EXPOSE 8080
