@@ -28,6 +28,10 @@ public class ServiceController {
                 Statement stmt=dbconn.con.createStatement();
 
                 ResultSet rs=stmt.executeQuery("select * from t where upper(dummy) = '" + argDB.toUpperCase() + "'");
+
+                log.info("INFO: Result obtained from the DB");
+                log.debug("DEBUG: Result obtained from the DB");
+
                 while(rs.next())
                     res = res + rs.getString(1);/*+"  "+rs.getString(2)+"  "+rs.getString(3)*/
 

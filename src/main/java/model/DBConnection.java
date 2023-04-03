@@ -22,6 +22,8 @@ public class DBConnection {
             con=DriverManager.getConnection(
                     url, username, password
             );
+            log.info("INFO: DB Connection established");
+            log.debug("DEBUG: DB Connection established");
         } catch (Exception e) {
             log.error(e);
         }
