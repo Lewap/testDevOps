@@ -8,11 +8,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Build DONE. Get OJDBC:'
-                RUN mkdir lib
-                RUN cd lib
-                RUN wget https://download.oracle.com/otn-pub/otn_software/jdbc/1918/ojdbc10.jar
-                RUN export CLASSPATH=$CLASSPATH:$WORKSPACE/lib
+                echo 'Build DONE.'
                 sh 'uname -a'
                 sh 'export;ls -l /usr/local/tomcat/lib;cd /;find . 2>/dev/null | grep ojdbc || true'
                 //echo 'DOCKER RESTART'
