@@ -40,7 +40,7 @@ public class ServiceController {
 
     @Path("/getSomething")
     @GET
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED);
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_HTML)
     public Response sampleResponse(@FormParam("Username") String username,
                                    @FormParam("Password") String password,
