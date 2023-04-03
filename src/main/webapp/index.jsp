@@ -1,6 +1,34 @@
-<html>
+<html lang="en">
+<head>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
+    <meta charset="UTF-8">
+    <title>testPage</title>
+</head>
 <body>
-<h2>Hello World!</h2>
-<a href="services/getSomething">Some Service</a>
+<center>
+    <form name="Form1"
+          method="post"
+          action="services/getSomething">
+    <table>
+        <tr>
+            <td>Arg1</td>
+            <td><input type="text" name="Username" size="25" value=""></td>
+        </tr>
+        <tr>
+            <td>Arg2</td>
+            <td><input type="password" name="Password" size="25" value=""></td>
+        </tr>
+        <tr>
+            <td>ArgDB</td>
+            <td><input type="text" name="ArgDB" size="25" value=""></td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+</center>
 </body>
 </html>
