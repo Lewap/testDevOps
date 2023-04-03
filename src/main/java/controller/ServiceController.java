@@ -19,7 +19,7 @@ import model.DBConnection;
 public class ServiceController {
 
     //jdbc:oracle:thin:lewap/changeMe@//192.168.0.129:1521/orcl
-    String URL = "jdbc:oracle:thin://192.168.0.129:1521/orcl";
+    String URL = "jdbc:oracle:thin:@//192.168.0.129:1521/orcl";
     String USERNAME = "lewap";
     String PASSWORD = "changeMe";
 
