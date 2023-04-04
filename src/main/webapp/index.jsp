@@ -32,8 +32,10 @@
 
     <form name="Form2"
           method="post"
+          enctype="multipart/form-data"
           action="services/uploadPD">
-          <input type="file" name="Choose process data file" id="uploadPD">
+          <input type="file" name="pd">
+          <!--<input type="text" name="InText" size="25" value="">-->
           <input type="submit" value="Upload">
     </form>
 

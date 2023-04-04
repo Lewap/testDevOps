@@ -55,6 +55,15 @@ public class ServiceController {
 
     }
 
+    @Path("/uploadPD")
+    @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.TEXT_HTML)
+    public Response sampleResponse2( /* @FormDataParam("pd") InputStream uploadedPD */) {
+        return Response.ok().entity("Some response from the Webo Servico222.").build();
+
+    }
+
     /*@Path("/uploadPD")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
