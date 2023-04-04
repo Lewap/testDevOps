@@ -55,12 +55,12 @@ public class ServiceController {
 
     }
 
-    /*@Path("/uploadPD")
+    @Path("/uploadPD")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.TEXT_HTML)
     public Response uploadPD(@FormDataParam("file") InputStream uploadedInputStream) {
         return Response.ok().entity("File received TODO").build();
 
-    }*/
+    }
 }
