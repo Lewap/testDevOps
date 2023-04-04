@@ -7,8 +7,11 @@ import javax.ws.rs.core.Response;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import model.DBConnection;
 
@@ -16,7 +19,7 @@ import model.DBConnection;
 public class ServiceController {
     String URL = "jdbc:oracle:thin:@//192.168.0.129:1521/orcl";
 
-    private static Logger log = LogManager.getLogger(ServiceController.class);
+    private static Log log = LogFactory.getLog(ServiceController.class);
 
     private String getValFromOra(String username, String password, String argDB){
 
