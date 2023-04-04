@@ -2,8 +2,8 @@ package model;
 
 import java.sql.*;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class DBConnection {
 
@@ -12,7 +12,7 @@ public class DBConnection {
     private String url;
 
     public Connection con = null;
-    private static Logger log = LogManager.getLogger(DBConnection.class);
+    private static Log log = LogFactory.getLog(DBConnection.class);
 
     public DBConnection (String inUsername, String inPassword, String inUrl) {
         this.username = inUsername;
@@ -22,8 +22,9 @@ public class DBConnection {
             con=DriverManager.getConnection(
                     url, username, password
             );
-            log.info("INFO: DB Connection established");
-            log.debug("DEBUG: DB Connection established");
+
+            log.info("DBConnection object created");
+
         } catch (Exception e) {
             log.error(e);
         }
