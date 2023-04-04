@@ -29,6 +29,14 @@
     </table>
     <input type="submit" value="Submit">
     </form>
+
+    <form name="Form2"
+          method="post"
+          action="services/uploadPD">
+          <input type="file" name="Choose process data file" id="uploadPD">
+          <input type="submit" value="Upload">
+    </form>
+
 </center>
 </body>
 </html>

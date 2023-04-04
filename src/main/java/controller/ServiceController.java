@@ -4,6 +4,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.glassfish.jersey.media.multipart.FormDataParam;
+
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -49,6 +52,15 @@ public class ServiceController {
                                    @FormParam("Password") String password,
                                    @FormParam("ArgDB") String argDB) {
         return Response.ok().entity("Some response from the Webo Servico. DB Result = " + getValFromOra(username, password, argDB)).build();
+
+    }
+
+    @Path("/uploadPD")
+    @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.TEXT_HTML)
+    public Response uploadPD(@FormDataParam("file") InputStream uploadedInputStream) {
+        return Response.ok().entity("File received TODO").build();
 
     }
 }
