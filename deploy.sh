@@ -8,10 +8,9 @@ mvn compile
 mvn package
 mvn install tomcat7:deploy > mvn_install_log
 cat mvn_install_log
-#echo "after cat"
 if grep -q "FAIL - Application already exists at path" mvn_install_log; then
   mvn install tomcat7:deploy
   echo "redeployed"
 fi
+rm mvn_install_log
 #mvn install tomcat7:deploy
-
