@@ -1,12 +1,10 @@
-package controller;
+package com.vogella.jersey.first;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.Provider;
 
-import org.glassfish.jersey.media.multipart.FormDataParam;
-
-import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -15,7 +13,8 @@ import org.apache.commons.logging.LogFactory;
 
 import model.DBConnection;
 
-@Path("/")
+@Path("/services")
+@Provider
 public class ServiceController {
     String URL = "jdbc:oracle:thin:@//192.168.0.129:1521/orcl";
 
@@ -55,20 +54,20 @@ public class ServiceController {
 
     }
 
-    @Path("/uploadPD")
+    /*@Path("/uploadPD")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.TEXT_HTML)
-    public Response sampleResponse2( /* @FormDataParam("pd") InputStream uploadedPD */) {
+    public Response uploadPD( @FormDataParam("pd") InputStream uploadedPD ) {
         return Response.ok().entity("Some response from the Webo Servico222.").build();
 
-    }
+    }*/
 
     /*@Path("/uploadPD")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.TEXT_HTML)
-    public Response uploadPD(@FormDataParam("file") InputStream uploadedInputStream) {
+    public Response uploadPD(@FormDataParam("pd") InputStream uploadedInputStream) {
         return Response.ok().entity("File received TODO").build();
 
     }*/
