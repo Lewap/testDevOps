@@ -6,6 +6,7 @@ FROM maven:3.8.6-jdk-11 as warBuild
 WORKDIR /app
 COPY --from=clone /app/testDevOps /app 
 RUN mvn compile
+RUN mvn test
 RUN mvn package
 
 FROM tomcat:9.0
