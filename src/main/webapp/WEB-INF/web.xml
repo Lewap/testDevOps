@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>com.vogella.jersey.first</display-name>
+  <display-name>com.lewap02.learning</display-name>
   <servlet>
     <servlet-name>Jersey REST Service</servlet-name>
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-    <!-- Register resources and providers under com.vogella.jersey.first package. -->
+    <!-- Register resources and providers under com.lewap02.learning package. -->
     <init-param>
       <param-name>jersey.config.server.provider.packages</param-name>
-      <param-value>com.vogella.jersey.first</param-value>
+      <param-value>com.lewap02.learning</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
@@ -15,4 +15,27 @@
     <servlet-name>Jersey REST Service</servlet-name>
     <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Wildcard means whole app requires authentication</web-resource-name>
+      <url-pattern>/*</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+      <http-method>PUT</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>appaccess</role-name>
+    </auth-constraint>
+
+    <user-data-constraint>
+      <!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE -->
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+
+  <login-config>
+    <auth-method>BASIC</auth-method>
+  </login-config>
+
 </web-app>

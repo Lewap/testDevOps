@@ -8,33 +8,26 @@
     <meta charset="UTF-8">
     <title>testPage</title>
 </head>
-<body>
+<body style="background-color: gray">
 <center>
     <table>
         <tr>
             <td>hello</td>
             <td><a href="rest/hello">hello</a></td>
         </tr>
-        <%-- <tr>
-            <td>Arg1</td>
-            <td><input type="text" name="Username" size="25" value=""></td>
-        </tr>
-        <tr>
-            <td>Arg1</td>
-            <td><input type="text" name="Username" size="25" value=""></td>
-        </tr> --%>
     </table>
+
     <form name="Form1"
           method="post"
           action="rest/services/getSomething">
     <table>
         <tr>
             <td>Arg1</td>
-            <td><input type="text" name="Username" size="25" value=""></td>
+            <td><input type="text" name="Username" size="25" value="lewap"></td>
         </tr>
         <tr>
             <td>Arg2</td>
-            <td><input type="password" name="Password" size="25" value=""></td>
+            <td><input type="password" name="Password" size="25" value="lewap"></td>
         </tr>
         <tr>
             <td>ArgDB</td>
@@ -42,6 +35,12 @@
         </tr>
     </table>
     <input type="submit" value="Submit">
+    </form>
+
+    <form name="Form2"
+          method="post"
+          action="rest/services/employee/create">
+          <input type="submit" value="Submit 2">
     </form>
 
     <%-- <form name="Form2"

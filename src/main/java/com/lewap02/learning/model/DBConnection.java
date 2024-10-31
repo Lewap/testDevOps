@@ -1,26 +1,28 @@
-package model;
+package com.lewap02.learning.model;
 
 import java.sql.*;
+import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 public class DBConnection {
 
-    private String username;
-    private String password;
+    private Properties props;
     private String url;
 
     public Connection con = null;
     private static Log log = LogFactory.getLog(DBConnection.class);
 
     public DBConnection (String inUsername, String inPassword, String inUrl) {
-        this.username = inUsername;
-        this.password = inPassword;
+        props = new Properties();
+        props.setProperty("user", inUsername);
+        props.setProperty("password", inPassword);
         this.url = inUrl;
         try {
+            Class.forName("org.postgresql.Driver");
             con=DriverManager.getConnection(
-                    url, username, password
+                    url, props
             );
 
             log.info("DBConnection object created");

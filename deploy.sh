@@ -3,7 +3,7 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64;export PATH=$JAVA_HOME/bin:$
 sudo rm /var/lib/tomcat9/webapps/testDevOps.war
 sudo rm -R /var/lib/tomcat9/webapps/testDevOps
 mvn clean
-#mvn dependency:copy-dependencies -X
+mvn dependency:copy-dependencies -X
 mvn compile
 mvn package
 mvn install tomcat7:deploy > mvn_install_log
