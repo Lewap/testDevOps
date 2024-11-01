@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.lewap02.learning.model.Employee;
+import com.lewap02.learning.model.dao.Employee;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -74,7 +74,7 @@ public class ServiceController {
     @Path("/employee/create")
     @POST
     @Produces(MediaType.TEXT_HTML)
-    public Response createEmployee () {
+    public Response createEmployee (@FormParam("empName") String empName) {
 
         try {
             SessionFactory sessionFactory
@@ -83,7 +83,7 @@ public class ServiceController {
             Session session = sessionFactory.openSession();
             Transaction t = session.beginTransaction();
 
-            Employee emp = new Employee(101, "John");
+            Employee emp = new Employee(empName);
             //session.save(emp);
             session.persist(emp);
             t.commit();

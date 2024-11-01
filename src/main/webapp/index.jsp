@@ -40,6 +40,10 @@
     <form name="Form2"
           method="post"
           action="rest/services/employee/create">
+          <tr>
+              <td>Employee name</td>
+              <td><input type="text" name="empName" size="25" value=""></td>
+          </tr>
           <input type="submit" value="Submit 2">
     </form>
 

@@ -8,7 +8,7 @@ public class SessionFactoryProvider {
     public static SessionFactory provideSessionFactory() {
 
         Configuration config = new Configuration();
-        config.configure("resources/hibernate.cfg.xml");
+        config.configure("hibernate.cfg.xml");
         return config.buildSessionFactory();
 
     }
