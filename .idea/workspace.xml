@@ -7,11 +7,7 @@
     <list default="true" id="e3369b20-5916-4ab7-b3d4-2c67b6b5356d" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lewap02/learning/controller/ServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lewap02/learning/controller/ServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lewap02/learning/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lewap02/learning/model/dao/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lewap02/learning/model/SessionFactoryProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lewap02/learning/model/SessionFactoryProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Employee.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Employee.hbm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lewap02/learning/model/dao/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lewap02/learning/model/dao/Employee.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -468,7 +464,7 @@
       <option name="project" value="LOCAL" />
       <updated>1680623846969</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

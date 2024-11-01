@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 
 import com.lewap02.learning.model.dao.Employee;
 import org.apache.commons.logging.Log;
@@ -71,10 +72,24 @@ public class ServiceController {
 
     }
 
+    public List<Employee> findAllEmployees (Session session) {
+        return session.createQuery("SELECT a FROM Employee a", Employee.class).getResultList();
+    }
+
+    private String makeResponse (String contentInside) {
+        return "<body style=\"background-color: gray\">Created<br>" + contentInside + "</body>";
+    }
+
     @Path("/employee/create")
     @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_HTML)
     public Response createEmployee (@FormParam("empName") String empName) {
+
+        List<Employee> allEmployees = null;
+
+        String table = "<table>";
+        table = table + "<tbody>";
 
         try {
             SessionFactory sessionFactory
@@ -88,12 +103,23 @@ public class ServiceController {
             session.persist(emp);
             t.commit();
 
+            allEmployees = findAllEmployees(session);
+            for (Employee e : allEmployees) {
+
+                table += "<tr><td>" + e.getEmpId() + "</td><td>" + e.getEmpName() + "</td></tr>";
+
+            }
+
             sessionFactory.close();
         }
         catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("<body style=\"background-color: gray\">ERROR " + e + "</body>").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(makeResponse("ERROR" + e)).build();
         }
-        return Response.ok().entity("<body style=\"background-color: gray\">Created</body>").build();
+
+        table = table + "</tbody>";
+        table = table + "</table>";
+
+        return Response.ok().entity(makeResponse(table)).build();
 
     }
 

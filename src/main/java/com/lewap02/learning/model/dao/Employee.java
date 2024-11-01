@@ -19,6 +19,10 @@ public class Employee {
     @Column(name = "empname", insertable = true, updatable = true)
     private String empName;
 
+    public Employee () {
+
+    }
+
     public Employee (String empName) {
         //super();
         //this.empId = empId;
