@@ -1,5 +1,6 @@
 package com.lewap02.learning.model.dao;
 
+import com.lewap02.learning.util.annotations.Getter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,7 +15,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "empid", insertable = true, updatable = false, nullable = false)
-    private int empId;
+    private Integer empId;
 
     @Column(name = "empname", insertable = true, updatable = true)
     private String empName;
@@ -24,21 +25,21 @@ public class Employee {
     }
 
     public Employee (String empName) {
-        //super();
-        //this.empId = empId;
         this.empName = empName;
     }
 
-    public int getEmpId() {
-        return empId;
+    @Getter(fieldName = "empId")
+    public Integer getEmpId() {
+        return this.empId;
     }
 
-    public void setEmpId(int empId) {
+    public void setEmpId(Integer empId) {
         this.empId = empId;
     }
 
+    @Getter(fieldName = "empName")
     public String getEmpName() {
-        return empName;
+        return this.empName;
     }
 
     public void setEmpName(String empName) {

@@ -1,23 +1,29 @@
 package com.lewap02.learning.controller;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import com.lewap02.learning.util.NoGetterForFieldException;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 
 import com.lewap02.learning.model.dao.Employee;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.lewap02.learning.model.SessionFactoryProvider;
 import com.lewap02.learning.model.DBConnection;
+import com.lewap02.learning.util.Util;
+import com.lewap02.learning.util.TooManyGettersForSameFileException;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+
+import jakarta.persistence.Column;
 
 @Path("/services")
 //@Provider
@@ -36,13 +42,7 @@ public class ServiceController {
 
                 Statement stmt=dbconn.con.createStatement();
 
-                //PreparedStatement ps = dbconn.con.prepareStatement("CREATE TABLE t2 (dummy TEXT)");
-                //ps.executeUpdate();
-                //ps = dbconn.con.prepareStatement("INSERT INTO t2 VALUES (\"X\")");
-                //ps.close();
-
                 ResultSet rs=stmt.executeQuery("select * from t where upper(dummy) = '" + argDB.toUpperCase() + "'");
-                //ResultSet rs=stmt.executeQuery("select * from pg_catalog.pg_tables where schemaname='lewap'");
 
                 log.info("Result obtained from the DB");
 
@@ -68,28 +68,21 @@ public class ServiceController {
     public Response sampleResponse(@FormParam("Username") String username,
                                    @FormParam("Password") String password,
                                    @FormParam("ArgDB") String argDB) {
-        return Response.ok().entity("<body style=\"background-color: gray\">Some response from the Webo Servico. DB Result = " + getValFromDB(username, password, argDB) + "</body>").build();
+        return Response.ok().entity(Util.makeResponse(getValFromDB(username, password, argDB))).build();
 
     }
 
-    public List<Employee> findAllEmployees (Session session) {
+    private List<Employee> findAllEmployees (Session session) {
         return session.createQuery("SELECT a FROM Employee a", Employee.class).getResultList();
-    }
-
-    private String makeResponse (String contentInside) {
-        return "<body style=\"background-color: gray\">Created<br>" + contentInside + "</body>";
     }
 
     @Path("/employee/create")
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_HTML)
-    public Response createEmployee (@FormParam("empName") String empName) {
+    public Response createEmployee (@FormParam("empName") String empName) throws TooManyGettersForSameFileException, NoGetterForFieldException {
 
         List<Employee> allEmployees = null;
-
-        String table = "<table>";
-        table = table + "<tbody>";
 
         try {
             SessionFactory sessionFactory
@@ -104,22 +97,14 @@ public class ServiceController {
             t.commit();
 
             allEmployees = findAllEmployees(session);
-            for (Employee e : allEmployees) {
-
-                table += "<tr><td>" + e.getEmpId() + "</td><td>" + e.getEmpName() + "</td></tr>";
-
-            }
 
             sessionFactory.close();
         }
         catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(makeResponse("ERROR" + e)).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(Util.makeResponse("ERROR" + e)).build();
         }
 
-        table = table + "</tbody>";
-        table = table + "</table>";
-
-        return Response.ok().entity(makeResponse(table)).build();
+        return Response.ok().entity(Util.makeResponse(Util.makeTable(allEmployees))).build();
 
     }
 

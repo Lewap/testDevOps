@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-app_6_1.xsd"
+         version="6.1"
+         metadata-complete="true">
+
   <display-name>com.lewap02.learning</display-name>
   <servlet>
     <servlet-name>Jersey REST Service</servlet-name>
@@ -16,7 +22,7 @@
     <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
 
-  <security-constraint>
+  <!--<security-constraint>
     <web-resource-collection>
       <web-resource-name>Wildcard means whole app requires authentication</web-resource-name>
       <url-pattern>/*</url-pattern>
@@ -29,13 +35,12 @@
     </auth-constraint>
 
     <user-data-constraint>
-      <!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE -->
       <transport-guarantee>NONE</transport-guarantee>
     </user-data-constraint>
-  </security-constraint>
+  </security-constraint>-->
 
   <login-config>
-    <auth-method>BASIC</auth-method>
+    <auth-method>NONE</auth-method>
   </login-config>
 
 </web-app>
