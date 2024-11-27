@@ -1,6 +1,5 @@
 package com.lewap02.learning.controller;
 
-import com.lewap02.learning.util.NoGetterForFieldException;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -9,15 +8,17 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 
-import com.lewap02.learning.model.dao.Employee;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.lewap02.learning.model.SessionFactoryProvider;
 import com.lewap02.learning.model.DBConnection;
 import com.lewap02.learning.util.Util;
 import com.lewap02.learning.util.TooManyGettersForSameFileException;
+import com.lewap02.learning.util.NoGetterForFieldException;
+
+import com.lewap02.learning.model.dao.Employee;
+import com.lewap02.learning.model.dao.Address;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -105,6 +106,47 @@ public class ServiceController {
         }
 
         return Response.ok().entity(Util.makeResponse(Util.makeTable(allEmployees))).build();
+
+    }
+
+    private List<Address> findAllAddresses (Session session) {
+        return session.createQuery("SELECT a FROM Address a", Address.class).getResultList();
+    }
+
+    @Path("/address/create")
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.TEXT_HTML)
+    public Response createAddress (@FormParam("street") String street,
+                                   @FormParam("houseNumber") String houseNumber,
+                                   @FormParam("city") String city
+    ) throws TooManyGettersForSameFileException, NoGetterForFieldException {
+
+        List<Address> allAddresses = null;
+
+        try {
+            SessionFactory sessionFactory
+                    = SessionFactoryProvider
+                    .provideSessionFactory();
+            Session session = sessionFactory.openSession();
+            Transaction t = session.beginTransaction();
+
+            Address address = new Address(street,
+                                        houseNumber,
+                                        city);
+            //session.save(emp);
+            session.persist(address);
+            t.commit();
+
+            allAddresses = findAllAddresses(session);
+
+            sessionFactory.close();
+        }
+        catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(Util.makeResponse("ERROR" + e)).build();
+        }
+
+        return Response.ok().entity(Util.makeResponse(Util.makeTable(allAddresses))).build();
 
     }
 

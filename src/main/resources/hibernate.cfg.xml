@@ -3,7 +3,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <!--<property name="hibernate.hbm2ddl.auto">create</property>-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/lewap</property>
@@ -11,5 +11,6 @@
         <property name="hibernate.connection.password">lewap</property>
         <!--<mapping resource="Employee.hbm.xml"></mapping>-->
         <mapping class="com.lewap02.learning.model.dao.Employee"/>
+        <mapping class="com.lewap02.learning.model.dao.Address"/>
     </session-factory>
 </hibernate-configuration>

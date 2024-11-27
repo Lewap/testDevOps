@@ -47,6 +47,24 @@
           <input type="submit" value="Submit 2">
     </form>
 
+    <form name="Form3"
+          method="post"
+          action="rest/services/address/create">
+          <tr>
+              <td>Street</td>
+              <td><input type="text" name="street" size="25" value=""></td>
+          </tr>
+          <tr>
+              <td>House Number</td>
+              <td><input type="text" name="houseNumber" size="25" value=""></td>
+          </tr>
+          <tr>
+              <td>City</td>
+              <td><input type="text" name="city" size="25" value=""></td>
+          </tr>
+          <input type="submit" value="Submit 3">
+    </form>
+
     <%-- <form name="Form2"
           method="post"
           enctype="multipart/form-data"
