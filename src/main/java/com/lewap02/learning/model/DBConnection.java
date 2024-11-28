@@ -8,21 +8,21 @@ import org.apache.commons.logging.LogFactory;
 
 public class DBConnection {
 
-    private Properties props;
-    private String url;
+    private Connection con = null;
+    private static final Log log = LogFactory.getLog(DBConnection.class);
 
-    public Connection con = null;
-    private static Log log = LogFactory.getLog(DBConnection.class);
+    public Connection getCon() {
+        return this.con;
+    }
 
     public DBConnection (String inUsername, String inPassword, String inUrl) {
-        props = new Properties();
+        Properties props = new Properties();
         props.setProperty("user", inUsername);
         props.setProperty("password", inPassword);
-        this.url = inUrl;
         try {
             Class.forName("org.postgresql.Driver");
             con=DriverManager.getConnection(
-                    url, props
+                    inUrl, props
             );
 
             log.info("DBConnection object created");
